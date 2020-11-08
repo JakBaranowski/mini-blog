@@ -11,7 +11,7 @@ func main() {
 	fs := http.FileServer(http.Dir("./static"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
-	h := servetastic.NewHandler("templates/layout", "templates/bodies", "main")
+	h := servetastic.NewHandler("templates/layout", "templates/content", "bulma")
 	http.Handle("/", h)
 
 	log.Print("Starting server at :8080")
