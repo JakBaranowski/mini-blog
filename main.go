@@ -4,14 +4,14 @@ import (
 	"log"
 	"net/http"
 
-	servtatic "github.com/JakBaranowski/mini-blog/servers"
+	servetastic "github.com/JakBaranowski/servetastic"
 )
 
 func main() {
 	fs := http.FileServer(http.Dir("./static"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
-	h := servtatic.NewHandler("templates/layout", "templates/bodies", "main")
+	h := servetastic.NewHandler("templates/layout", "templates/bodies", "main")
 	http.Handle("/", h)
 
 	log.Print("Starting server at :8080")
